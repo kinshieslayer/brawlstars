@@ -1,5 +1,5 @@
 
-import { ShoppingCart, Menu } from "lucide-react";
+import { Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
@@ -27,10 +27,9 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-6">
           <a href="#gems" className="hover:text-brawl-purple transition-colors">Gem Packs</a>
           <a href="#benefits" className="hover:text-brawl-purple transition-colors">Benefits</a>
-          <a href="#brawlers" className="hover:text-brawl-purple transition-colors">Brawlers</a>
-          <Button className="bg-brawl-purple hover:bg-brawl-purple/90 rounded-full font-bold">
-            <ShoppingCart size={18} className="mr-2" />
-            View Cart
+          <a href="#proofs" className="hover:text-brawl-purple transition-colors">Proofs</a>
+          <Button className="bg-brawl-green hover:bg-brawl-green/90 rounded-full font-bold">
+            Get Free Gems
           </Button>
         </div>
 
@@ -64,15 +63,14 @@ const Navbar = () => {
               Benefits
             </a>
             <a 
-              href="#brawlers" 
+              href="#proofs" 
               className="hover:text-brawl-purple transition-colors py-2"
               onClick={() => setIsMenuOpen(false)}
             >
-              Brawlers
+              Proofs
             </a>
-            <Button className="bg-brawl-purple hover:bg-brawl-purple/90 rounded-full font-bold">
-              <ShoppingCart size={18} className="mr-2" />
-              View Cart
+            <Button className="bg-brawl-green hover:bg-brawl-green/90 rounded-full font-bold">
+              Get Free Gems
             </Button>
           </div>
         </div>

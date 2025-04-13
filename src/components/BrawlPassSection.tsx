@@ -2,12 +2,14 @@
 import { Button } from "@/components/ui/button";
 import { Crown, CheckCircle, Gift } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useToast } from "@/hooks/use-toast";
+import { useGetFreeDialog } from "@/hooks/use-get-free-dialog";
 
 const brawlPassOptions = [
   {
     id: 1,
-    name: "Free Pass",
-    price: "FREE",
+    name: "Pro Pass",
+    price: "$4.99",
     color: "green",
     features: [
       "Basic rewards each tier",
@@ -15,7 +17,7 @@ const brawlPassOptions = [
       "Basic emotes",
       "Free brawler progression"
     ],
-    isFree: true
+    isFree: false
   },
   {
     id: 2,
@@ -47,6 +49,16 @@ const brawlPassOptions = [
 
 const BrawlPassSection = () => {
   const isMobile = useIsMobile();
+  const { toast } = useToast();
+  const { openGetFreeDialog } = useGetFreeDialog();
+  
+  const handlePurchase = () => {
+    toast({
+      title: "Payment Server Issue",
+      description: "Payment server have issue right now. Try get free option instead.",
+      variant: "destructive"
+    });
+  };
   
   return (
     <section id="brawl-pass" className="py-12 md:py-16 relative overflow-hidden">
@@ -84,12 +96,16 @@ const BrawlPassSection = () => {
                 'bg-brawl-yellow/20'
               }`}>
                 <div className="flex justify-center mb-2 transform transition-transform hover:rotate-12">
-                  {option.color === 'yellow' ? (
+                  {index === 0 ? (
+                    <img 
+                      src="/lovable-uploads/e792756b-c9b2-4fdc-a08b-649888af1cc5.png" 
+                      alt="Pro Pass" 
+                      className="h-10 w-10 object-contain"
+                    />
+                  ) : option.color === 'yellow' ? (
                     <Crown size={36} className="text-brawl-yellow" />
-                  ) : option.color === 'blue' ? (
-                    <Crown size={32} className="text-brawl-blue" />
                   ) : (
-                    <Gift size={30} className="text-brawl-green" />
+                    <Crown size={32} className="text-brawl-blue" />
                   )}
                 </div>
                 <h3 className="text-2xl font-lilita">{option.name}</h3>
@@ -113,6 +129,7 @@ const BrawlPassSection = () => {
                 </ul>
                 <div className="space-y-2">
                   <Button 
+                    onClick={handlePurchase}
                     className={`w-full font-bold rounded-xl py-2 ${
                       option.isFree ? 
                       'bg-brawl-green hover:bg-brawl-green/80' : 
@@ -124,12 +141,14 @@ const BrawlPassSection = () => {
                     {option.isFree ? 'Get Free' : 'Purchase'}
                   </Button>
                   
-                  {!option.isFree && (
-                    <Button variant="outline" className="w-full font-bold rounded-xl py-2 border-2 border-white/20 hover:bg-white/10 text-white transform transition-transform active:scale-95">
-                      <Gift size={18} className="mr-2" />
-                      Get Free
-                    </Button>
-                  )}
+                  <Button 
+                    onClick={openGetFreeDialog}
+                    variant="outline" 
+                    className="w-full font-bold rounded-xl py-2 border-2 border-white/20 hover:bg-white/10 text-white transform transition-transform active:scale-95"
+                  >
+                    <Gift size={18} className="mr-2" />
+                    Get Free
+                  </Button>
                 </div>
               </div>
             </div>

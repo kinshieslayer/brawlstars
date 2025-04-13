@@ -27,10 +27,10 @@ const testimonials = [
 
 const TestimonialSection = () => {
   return (
-    <section className="py-16 bg-background">
+    <section id="proofs" className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-lilita mb-4">What <span className="text-brawl-blue">Brawlers</span> Say</h2>
+          <h2 className="text-3xl md:text-5xl font-lilita mb-4">Our <span className="text-brawl-blue">Proofs</span></h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             Join thousands of satisfied players who have powered up their game with our premium gems.
           </p>

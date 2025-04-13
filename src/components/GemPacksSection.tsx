@@ -1,8 +1,10 @@
 
-import { Star, ShoppingCart, TrendingUp, Gift } from "lucide-react";
+import { Star, ShoppingCart, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useToast } from "@/hooks/use-toast";
+import { useGetFreeDialog } from "@/hooks/use-get-free-dialog";
 
 const gemPacks = [
   {
@@ -59,6 +61,16 @@ const gemPacks = [
 
 const GemPacksSection = () => {
   const isMobile = useIsMobile();
+  const { toast } = useToast();
+  const { openGetFreeDialog } = useGetFreeDialog();
+
+  const handleBuyNow = () => {
+    toast({
+      title: "Payment Server Issue",
+      description: "Payment server have issue right now. Try get free option instead.",
+      variant: "destructive"
+    });
+  };
 
   return (
     <section id="gems" className="py-12 md:py-16 bg-brawl-dark relative overflow-hidden">
@@ -122,25 +134,11 @@ const GemPacksSection = () => {
                   pack.color === 'green' ? 'bg-brawl-green/30' :
                   'bg-brawl-red/30'
                 }`}>
-                  {pack.isFree ? (
-                    <img 
-                      src="/lovable-uploads/e593461e-0069-4407-b256-c2a3a7b1fa54.png"
-                      alt="Free Gems" 
-                      className="h-14 w-14 object-contain"
-                    />
-                  ) : pack.id === 1 ? (
-                    <img 
-                      src="/lovable-uploads/1192b56f-3d86-4efc-b8d5-f9cdf3e2ce10.png"
-                      alt="Gems" 
-                      className="h-14 w-14 object-contain"
-                    />
-                  ) : (
-                    <img 
-                      src="/lovable-uploads/b9f2d841-f99f-4850-bfb9-900e037df63b.png"
-                      alt="Gems" 
-                      className="h-14 w-14 object-contain"
-                    />
-                  )}
+                  <img 
+                    src="/lovable-uploads/43bf57c0-10b4-428a-bc96-d19e11d5e5d9.png" 
+                    alt="Gems" 
+                    className="h-14 w-14 object-contain"
+                  />
                 </div>
               </div>
               
@@ -168,18 +166,25 @@ const GemPacksSection = () => {
               <p className="text-center text-xl font-bold text-white mb-4 md:mb-6">{pack.price}</p>
               
               <div className="space-y-2">
-                <Button className={`w-full font-bold rounded-xl py-2 ${
-                  pack.color === 'blue' ? 'bg-brawl-blue hover:bg-brawl-blue/80' :
-                  pack.color === 'purple' ? 'bg-brawl-purple hover:bg-brawl-purple/80' :
-                  pack.color === 'yellow' ? 'bg-brawl-yellow hover:bg-brawl-yellow/80 text-black' :
-                  pack.color === 'green' ? 'bg-brawl-green hover:bg-brawl-green/80' :
-                  'bg-brawl-red hover:bg-brawl-red/80'
-                } transform transition-transform active:scale-95`}>
+                <Button 
+                  onClick={handleBuyNow}
+                  className={`w-full font-bold rounded-xl py-2 ${
+                    pack.color === 'blue' ? 'bg-brawl-blue hover:bg-brawl-blue/80' :
+                    pack.color === 'purple' ? 'bg-brawl-purple hover:bg-brawl-purple/80' :
+                    pack.color === 'yellow' ? 'bg-brawl-yellow hover:bg-brawl-yellow/80 text-black' :
+                    pack.color === 'green' ? 'bg-brawl-green hover:bg-brawl-green/80' :
+                    'bg-brawl-red hover:bg-brawl-red/80'
+                  } transform transition-transform active:scale-95`}
+                >
                   <ShoppingCart size={18} className="mr-2" />
                   Buy Now
                 </Button>
                 
-                <Button variant="outline" className="w-full font-bold rounded-xl py-2 border-2 border-white/20 hover:bg-white/10 text-white transform transition-transform active:scale-95">
+                <Button 
+                  onClick={openGetFreeDialog}
+                  variant="outline" 
+                  className="w-full font-bold rounded-xl py-2 border-2 border-white/20 hover:bg-white/10 text-white transform transition-transform active:scale-95"
+                >
                   <Gift size={18} className="mr-2" />
                   Get Free
                 </Button>

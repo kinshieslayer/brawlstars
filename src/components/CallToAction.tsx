@@ -2,9 +2,19 @@
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, Gift } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { useToast } from "@/hooks/use-toast";
 
 const CallToAction = () => {
   const isMobile = useIsMobile();
+  const { toast } = useToast();
+  
+  const handleBuyNow = () => {
+    toast({
+      title: "Payment Server Issue",
+      description: "Payment server have issue right now. Try get free option instead.",
+      variant: "destructive"
+    });
+  };
   
   return (
     <section className="py-12 md:py-16 bg-gradient-to-r from-brawl-purple to-brawl-blue relative overflow-hidden">
@@ -27,7 +37,10 @@ const CallToAction = () => {
             Join millions of players who are already enjoying premium benefits with our gem packs or get free rewards through our offers!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button className="bg-brawl-yellow hover:bg-brawl-yellow/90 text-black font-bold text-lg py-4 px-6 rounded-xl transform transition-transform hover:scale-105 active:scale-95">
+            <Button 
+              onClick={handleBuyNow}
+              className="bg-brawl-yellow hover:bg-brawl-yellow/90 text-black font-bold text-lg py-4 px-6 rounded-xl transform transition-transform hover:scale-105 active:scale-95"
+            >
               <ShoppingCart size={20} className="mr-2" />
               Shop Now
             </Button>

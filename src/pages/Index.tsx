@@ -9,23 +9,28 @@ import FreeRewardsSection from "@/components/FreeRewardsSection";
 import ActivityFeed from "@/components/ActivityFeed";
 import CallToAction from "@/components/CallToAction";
 import Footer from "@/components/Footer";
+import { GetFreeDialogProvider } from "@/hooks/use-get-free-dialog";
+import { Toaster } from "@/components/ui/toaster";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      <Navbar />
-      <main className="pb-12">
-        <HeroSection />
-        <GemPacksSection />
-        <BrawlPassSection />
-        <BenefitsSection />
-        <FreeRewardsSection />
-        <TestimonialSection />
-        <CallToAction />
-      </main>
-      <Footer />
-      <ActivityFeed />
-    </div>
+    <GetFreeDialogProvider>
+      <div className="min-h-screen bg-background text-foreground">
+        <Navbar />
+        <main className="pb-12">
+          <HeroSection />
+          <GemPacksSection />
+          <BrawlPassSection />
+          <BenefitsSection />
+          <FreeRewardsSection />
+          <TestimonialSection />
+          <CallToAction />
+        </main>
+        <Footer />
+        <ActivityFeed />
+        <Toaster />
+      </div>
+    </GetFreeDialogProvider>
   );
 };
 
