@@ -2,6 +2,7 @@
 import { Star, ShoppingCart, TrendingUp, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const gemPacks = [
   {
@@ -57,18 +58,30 @@ const gemPacks = [
 ];
 
 const GemPacksSection = () => {
+  const isMobile = useIsMobile();
+
   return (
-    <section id="gems" className="py-16 bg-brawl-dark relative">
+    <section id="gems" className="py-12 md:py-16 bg-brawl-dark relative overflow-hidden">
+      <div className="absolute inset-0 bg-gem-pattern opacity-5 -z-10"></div>
+      
+      {/* Animated floating elements */}
+      <div className="absolute top-1/4 left-[10%] animate-float">
+        <div className="w-8 h-8 bg-brawl-purple/20 rounded-lg rotate-45"></div>
+      </div>
+      <div className="absolute bottom-1/4 right-[15%] animate-float animation-delay-1000">
+        <div className="w-6 h-6 bg-brawl-yellow/20 rounded-lg rotate-45"></div>
+      </div>
+      
       <div className="container mx-auto px-4">
-        <div className="text-center mb-12">
+        <div className="text-center mb-8 md:mb-12 animate-fade-in">
           <h2 className="text-3xl md:text-5xl font-lilita mb-4">Choose Your <span className="text-brawl-purple">Gem</span> Pack</h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             Select the perfect gem package for your gaming style. More gems mean more power, more skins, and more fun!
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
-          {gemPacks.map((pack) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 md:gap-6">
+          {gemPacks.map((pack, index) => (
             <div 
               key={pack.id}
               className={`gem-card bg-gradient-to-br ${
@@ -77,13 +90,13 @@ const GemPacksSection = () => {
                 pack.color === 'yellow' ? 'from-brawl-yellow/20 to-brawl-yellow/5' :
                 pack.color === 'green' ? 'from-brawl-green/20 to-brawl-green/5' :
                 'from-brawl-red/20 to-brawl-red/5'
-              } rounded-2xl p-6 border-2 ${
+              } rounded-2xl p-4 md:p-6 border-2 ${
                 pack.color === 'blue' ? 'border-brawl-blue/30' :
                 pack.color === 'purple' ? 'border-brawl-purple/30' :
                 pack.color === 'yellow' ? 'border-brawl-yellow/30' :
                 pack.color === 'green' ? 'border-brawl-green/30' :
                 'border-brawl-red/30'
-              } relative`}
+              } relative animate-fade-in animation-delay-${index * 100} transform hover:translate-y-[-5px] transition-all duration-300`}
             >
               {pack.popular && (
                 <Badge className="absolute -top-3 right-4 bg-brawl-purple text-white px-3 py-1 rounded-full font-bold">
@@ -101,8 +114,8 @@ const GemPacksSection = () => {
                 </Badge>
               )}
               
-              <div className="mb-6 flex justify-center">
-                <div className={`h-24 w-24 flex items-center justify-center rounded-xl ${
+              <div className="mb-4 md:mb-6 flex justify-center">
+                <div className={`h-20 w-20 flex items-center justify-center rounded-xl transform transition-transform hover:rotate-12 ${
                   pack.color === 'blue' ? 'bg-brawl-blue/30' :
                   pack.color === 'purple' ? 'bg-brawl-purple/30' :
                   pack.color === 'yellow' ? 'bg-brawl-yellow/30' :
@@ -110,16 +123,22 @@ const GemPacksSection = () => {
                   'bg-brawl-red/30'
                 }`}>
                   {pack.isFree ? (
-                    <Gift className="h-14 w-14 text-brawl-green" />
-                  ) : (
                     <img 
-                      src={`/gem-${pack.color}.png`}
+                      src="/lovable-uploads/e593461e-0069-4407-b256-c2a3a7b1fa54.png"
+                      alt="Free Gems" 
+                      className="h-14 w-14 object-contain"
+                    />
+                  ) : pack.id === 1 ? (
+                    <img 
+                      src="/lovable-uploads/1192b56f-3d86-4efc-b8d5-f9cdf3e2ce10.png"
                       alt="Gems" 
                       className="h-14 w-14 object-contain"
-                      onError={(e) => {
-                        e.currentTarget.src = "/placeholder.svg";
-                        e.currentTarget.className = "h-14 w-14";
-                      }}
+                    />
+                  ) : (
+                    <img 
+                      src="/lovable-uploads/b9f2d841-f99f-4850-bfb9-900e037df63b.png"
+                      alt="Gems" 
+                      className="h-14 w-14 object-contain"
                     />
                   )}
                 </div>
@@ -146,26 +165,25 @@ const GemPacksSection = () => {
                 <span className="text-2xl font-lilita text-white">{pack.gems} Gems</span>
               </div>
               
-              <p className="text-center text-xl font-bold text-white mb-6">{pack.price}</p>
+              <p className="text-center text-xl font-bold text-white mb-4 md:mb-6">{pack.price}</p>
               
-              <Button className={`w-full font-bold rounded-xl py-6 ${
-                pack.color === 'blue' ? 'bg-brawl-blue hover:bg-brawl-blue/80' :
-                pack.color === 'purple' ? 'bg-brawl-purple hover:bg-brawl-purple/80' :
-                pack.color === 'yellow' ? 'bg-brawl-yellow hover:bg-brawl-yellow/80 text-black' :
-                pack.color === 'green' ? 'bg-brawl-green hover:bg-brawl-green/80' :
-                'bg-brawl-red hover:bg-brawl-red/80'
-              }`}>
-                {pack.isFree ? (
-                  <>
-                    Get Free
-                  </>
-                ) : (
-                  <>
-                    <ShoppingCart size={18} className="mr-2" />
-                    Buy Now
-                  </>
-                )}
-              </Button>
+              <div className="space-y-2">
+                <Button className={`w-full font-bold rounded-xl py-2 ${
+                  pack.color === 'blue' ? 'bg-brawl-blue hover:bg-brawl-blue/80' :
+                  pack.color === 'purple' ? 'bg-brawl-purple hover:bg-brawl-purple/80' :
+                  pack.color === 'yellow' ? 'bg-brawl-yellow hover:bg-brawl-yellow/80 text-black' :
+                  pack.color === 'green' ? 'bg-brawl-green hover:bg-brawl-green/80' :
+                  'bg-brawl-red hover:bg-brawl-red/80'
+                } transform transition-transform active:scale-95`}>
+                  <ShoppingCart size={18} className="mr-2" />
+                  Buy Now
+                </Button>
+                
+                <Button variant="outline" className="w-full font-bold rounded-xl py-2 border-2 border-white/20 hover:bg-white/10 text-white transform transition-transform active:scale-95">
+                  <Gift size={18} className="mr-2" />
+                  Get Free
+                </Button>
+              </div>
             </div>
           ))}
         </div>

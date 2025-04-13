@@ -14,15 +14,17 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-      <ActivityFeed />
-      <HeroSection />
-      <GemPacksSection />
-      <BrawlPassSection />
-      <BenefitsSection />
-      <FreeRewardsSection />
-      <TestimonialSection />
-      <CallToAction />
+      <main className="pb-12">
+        <HeroSection />
+        <GemPacksSection />
+        <BrawlPassSection />
+        <BenefitsSection />
+        <FreeRewardsSection />
+        <TestimonialSection />
+        <CallToAction />
+      </main>
       <Footer />
+      <ActivityFeed />
     </div>
   );
 };

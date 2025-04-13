@@ -1,6 +1,8 @@
 
 import { useEffect, useState } from "react";
-import { Gift } from "lucide-react";
+import { Gift, ChevronUp, ChevronDown } from "lucide-react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
 // Fake user data
 const fakeUsers = [
@@ -18,6 +20,8 @@ const fakeUsers = [
 
 const ActivityFeed = () => {
   const [currentActivity, setCurrentActivity] = useState(0);
+  const [isOpen, setIsOpen] = useState(true);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     // Rotate through fake activities every few seconds
@@ -31,18 +35,41 @@ const ActivityFeed = () => {
   const user = fakeUsers[currentActivity];
 
   return (
-    <div className="bg-black/80 border-b border-white/10 py-2 px-4 fixed top-0 w-full z-50">
-      <div className="flex items-center justify-center text-sm">
-        <div className="flex items-center animate-pulse-soft">
-          <Gift size={16} className="text-brawl-green mr-2" />
+    <div className="fixed bottom-0 left-0 right-0 z-50 animate-fade-in">
+      <Collapsible open={isOpen} onOpenChange={setIsOpen}>
+        <div className="flex justify-center">
+          <CollapsibleTrigger className="bg-black/80 border-t border-l border-r border-white/10 rounded-t-lg px-4 py-1 flex items-center gap-1 text-sm text-white/80 hover:text-white">
+            {isOpen ? (
+              <>
+                <ChevronDown size={16} />
+                <span>Hide Activity</span>
+              </>
+            ) : (
+              <>
+                <ChevronUp size={16} />
+                <span>Show Activity</span>
+              </>
+            )}
+          </CollapsibleTrigger>
         </div>
-        <span className="text-white font-bold mr-1">{user.name}</span>
-        <span className="text-gray-300 mr-1">from</span>
-        <span className="text-white mr-1">{user.country}</span>
-        <span className="text-gray-300 mr-1">just received</span>
-        <span className="text-brawl-green font-bold">{user.reward}</span>
-        <span className="text-gray-400 ml-2">• {user.timeAgo} ago</span>
-      </div>
+        
+        <CollapsibleContent>
+          <div className="bg-black/80 border-t border-white/10 py-2 px-4 max-w-full">
+            <div className="flex items-center justify-center text-sm overflow-x-hidden whitespace-nowrap">
+              <div className="flex items-center animate-pulse-soft">
+                <Gift size={16} className="text-brawl-green mr-2 flex-shrink-0" />
+              </div>
+              <span className="text-white font-bold mr-1">{user.name}</span>
+              {!isMobile && <span className="text-gray-300 mr-1">from</span>}
+              <span className="text-white mr-1">{user.country}</span>
+              {!isMobile && <span className="text-gray-300 mr-1">just received</span>}
+              {isMobile && <span className="text-gray-300 mr-1">got</span>}
+              <span className="text-brawl-green font-bold">{user.reward}</span>
+              <span className="text-gray-400 ml-2 hidden sm:inline">• {user.timeAgo} ago</span>
+            </div>
+          </div>
+        </CollapsibleContent>
+      </Collapsible>
     </div>
   );
 };
