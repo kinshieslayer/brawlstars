@@ -1,9 +1,19 @@
 
-import { Star, ShoppingCart, TrendingUp } from "lucide-react";
+import { Star, ShoppingCart, TrendingUp, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 
 const gemPacks = [
+  {
+    id: 0,
+    name: "Free Gems",
+    gems: 30,
+    price: "FREE",
+    popular: false,
+    bestValue: false,
+    color: "green",
+    isFree: true
+  },
   {
     id: 1,
     name: "Starter Pack",
@@ -11,7 +21,8 @@ const gemPacks = [
     price: "$1.99",
     popular: false,
     bestValue: false,
-    color: "blue"
+    color: "blue",
+    isFree: false
   },
   {
     id: 2,
@@ -20,7 +31,8 @@ const gemPacks = [
     price: "$4.99",
     popular: true,
     bestValue: false,
-    color: "purple"
+    color: "purple",
+    isFree: false
   },
   {
     id: 3,
@@ -29,7 +41,8 @@ const gemPacks = [
     price: "$9.99",
     popular: false,
     bestValue: true,
-    color: "yellow"
+    color: "yellow",
+    isFree: false
   },
   {
     id: 4,
@@ -38,7 +51,8 @@ const gemPacks = [
     price: "$19.99",
     popular: false,
     bestValue: false,
-    color: "red"
+    color: "red",
+    isFree: false
   },
 ];
 
@@ -53,7 +67,7 @@ const GemPacksSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
           {gemPacks.map((pack) => (
             <div 
               key={pack.id}
@@ -61,11 +75,13 @@ const GemPacksSection = () => {
                 pack.color === 'blue' ? 'from-brawl-blue/20 to-brawl-blue/5' :
                 pack.color === 'purple' ? 'from-brawl-purple/20 to-brawl-purple/5' :
                 pack.color === 'yellow' ? 'from-brawl-yellow/20 to-brawl-yellow/5' :
+                pack.color === 'green' ? 'from-brawl-green/20 to-brawl-green/5' :
                 'from-brawl-red/20 to-brawl-red/5'
               } rounded-2xl p-6 border-2 ${
                 pack.color === 'blue' ? 'border-brawl-blue/30' :
                 pack.color === 'purple' ? 'border-brawl-purple/30' :
                 pack.color === 'yellow' ? 'border-brawl-yellow/30' :
+                pack.color === 'green' ? 'border-brawl-green/30' :
                 'border-brawl-red/30'
               } relative`}
             >
@@ -79,23 +95,33 @@ const GemPacksSection = () => {
                   BEST VALUE
                 </Badge>
               )}
+              {pack.isFree && (
+                <Badge className="absolute -top-3 right-4 bg-brawl-green text-white px-3 py-1 rounded-full font-bold">
+                  FREE
+                </Badge>
+              )}
               
               <div className="mb-6 flex justify-center">
                 <div className={`h-24 w-24 flex items-center justify-center rounded-xl ${
                   pack.color === 'blue' ? 'bg-brawl-blue/30' :
                   pack.color === 'purple' ? 'bg-brawl-purple/30' :
                   pack.color === 'yellow' ? 'bg-brawl-yellow/30' :
+                  pack.color === 'green' ? 'bg-brawl-green/30' :
                   'bg-brawl-red/30'
                 }`}>
-                  <img 
-                    src={`/gem-${pack.color}.png`}
-                    alt="Gems" 
-                    className="h-14 w-14 object-contain"
-                    onError={(e) => {
-                      e.currentTarget.src = "/placeholder.svg";
-                      e.currentTarget.className = "h-14 w-14";
-                    }}
-                  />
+                  {pack.isFree ? (
+                    <Gift className="h-14 w-14 text-brawl-green" />
+                  ) : (
+                    <img 
+                      src={`/gem-${pack.color}.png`}
+                      alt="Gems" 
+                      className="h-14 w-14 object-contain"
+                      onError={(e) => {
+                        e.currentTarget.src = "/placeholder.svg";
+                        e.currentTarget.className = "h-14 w-14";
+                      }}
+                    />
+                  )}
                 </div>
               </div>
               
@@ -105,12 +131,15 @@ const GemPacksSection = () => {
                 <Star 
                   fill={pack.color === 'blue' ? '#3D93F8' : 
                         pack.color === 'purple' ? '#9B30FF' :
-                        pack.color === 'yellow' ? '#FFCC00' : '#FF4040'} 
+                        pack.color === 'yellow' ? '#FFCC00' :
+                        pack.color === 'green' ? '#00CC66' :
+                        '#FF4040'} 
                   size={18} 
                   className={`text-${
                     pack.color === 'blue' ? 'brawl-blue' :
                     pack.color === 'purple' ? 'brawl-purple' :
                     pack.color === 'yellow' ? 'brawl-yellow' :
+                    pack.color === 'green' ? 'brawl-green' :
                     'brawl-red'
                   } mr-2`}
                 />
@@ -123,10 +152,19 @@ const GemPacksSection = () => {
                 pack.color === 'blue' ? 'bg-brawl-blue hover:bg-brawl-blue/80' :
                 pack.color === 'purple' ? 'bg-brawl-purple hover:bg-brawl-purple/80' :
                 pack.color === 'yellow' ? 'bg-brawl-yellow hover:bg-brawl-yellow/80 text-black' :
+                pack.color === 'green' ? 'bg-brawl-green hover:bg-brawl-green/80' :
                 'bg-brawl-red hover:bg-brawl-red/80'
               }`}>
-                <ShoppingCart size={18} className="mr-2" />
-                Buy Now
+                {pack.isFree ? (
+                  <>
+                    Get Free
+                  </>
+                ) : (
+                  <>
+                    <ShoppingCart size={18} className="mr-2" />
+                    Buy Now
+                  </>
+                )}
               </Button>
             </div>
           ))}

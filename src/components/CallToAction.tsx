@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { ShoppingCart } from "lucide-react";
+import { ShoppingCart, Gift } from "lucide-react";
 
 const CallToAction = () => {
   return (
@@ -21,15 +21,16 @@ const CallToAction = () => {
             Ready to Power Up Your Brawl Stars Experience?
           </h2>
           <p className="text-xl text-white/80 mb-8">
-            Join millions of players who are already enjoying premium benefits with our gem packs!
+            Join millions of players who are already enjoying premium benefits with our gem packs or get free rewards through our offers!
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button className="bg-brawl-yellow hover:bg-brawl-yellow/90 text-black font-bold text-lg py-6 px-8 rounded-xl">
               <ShoppingCart size={20} className="mr-2" />
               Shop Now
             </Button>
-            <Button variant="outline" className="border-white text-white hover:bg-white/10 font-bold text-lg py-6 px-8 rounded-xl">
-              View Special Offers
+            <Button className="bg-brawl-green hover:bg-brawl-green/90 text-white font-bold text-lg py-6 px-8 rounded-xl">
+              <Gift size={20} className="mr-2" />
+              Get Free Rewards
             </Button>
           </div>
         </div>
