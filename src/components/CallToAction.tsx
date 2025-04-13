@@ -3,10 +3,12 @@ import { Button } from "@/components/ui/button";
 import { ShoppingCart, Gift } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useToast } from "@/hooks/use-toast";
+import { useGetFreeDialog } from "@/hooks/use-get-free-dialog";
 
 const CallToAction = () => {
   const isMobile = useIsMobile();
   const { toast } = useToast();
+  const { openGetFreeDialog } = useGetFreeDialog();
   
   const handleBuyNow = () => {
     toast({
@@ -44,10 +46,21 @@ const CallToAction = () => {
               <ShoppingCart size={20} className="mr-2" />
               Shop Now
             </Button>
-            <Button className="bg-brawl-green hover:bg-brawl-green/90 text-white font-bold text-lg py-4 px-6 rounded-xl transform transition-transform hover:scale-105 active:scale-95">
+            <Button 
+              onClick={openGetFreeDialog}
+              className="bg-brawl-green hover:bg-brawl-green/90 text-white font-bold text-lg py-4 px-6 rounded-xl transform transition-transform hover:scale-105 active:scale-95"
+            >
               <Gift size={20} className="mr-2" />
               Get Free Rewards
             </Button>
+          </div>
+          
+          <div className="mt-8 md:mt-12 flex justify-center">
+            <img 
+              src="/lovable-uploads/29cf6554-5b4d-484c-a73f-25a548a74268.png" 
+              alt="Brawl Stars Character" 
+              className="max-h-32 animate-float"
+            />
           </div>
         </div>
       </div>
