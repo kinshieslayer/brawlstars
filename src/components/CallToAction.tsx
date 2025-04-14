@@ -1,6 +1,6 @@
 
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Gift } from "lucide-react";
+import { ShoppingCart, Gift, ArrowRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useToast } from "@/hooks/use-toast";
 import { useGetFreeDialog } from "@/hooks/use-get-free-dialog";
@@ -33,10 +33,10 @@ const CallToAction = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center animate-fade-in">
           <h2 className="text-2xl sm:text-3xl md:text-5xl font-lilita mb-4 md:mb-6 text-white">
-            Ready to Power Up Your Brawl Stars Experience?
+            Power Up Your <span className="text-brawl-yellow">Brawl Stars</span> Adventure!
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-white/80 mb-6 md:mb-8">
-            Join millions of players who are already enjoying premium benefits with our gem packs or get free rewards through our offers!
+            Get exclusive skins, unlock new brawlers, and dominate the arena with premium gems from the official Brawl Shop.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
@@ -48,10 +48,9 @@ const CallToAction = () => {
             </Button>
             <Button 
               onClick={openGetFreeDialog}
-              className="bg-brawl-green hover:bg-brawl-green/90 text-white font-bold text-lg py-4 px-6 rounded-xl transform transition-transform hover:scale-105 active:scale-95"
+              className="bg-transparent border-2 border-white hover:bg-white/10 text-white font-bold text-lg py-4 px-6 rounded-xl transform transition-transform hover:scale-105 active:scale-95"
             >
-              <Gift size={20} className="mr-2" />
-              Get Free Rewards
+              View Deals
             </Button>
           </div>
           
