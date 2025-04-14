@@ -64,12 +64,20 @@ const GemPacksSection = () => {
   const { toast } = useToast();
   const { openGetFreeDialog } = useGetFreeDialog();
 
-  const handleBuyNow = () => {
+  const handlePurchase = (packName: string) => {
     toast({
-      title: "Payment Server Issue",
-      description: "Payment server have issue right now. Try get free option instead.",
-      variant: "destructive"
+      title: "Purchase Started",
+      description: `Starting purchase for ${packName}...`,
     });
+    
+    // Simulate API call delay
+    setTimeout(() => {
+      toast({
+        title: "Payment Server Issue",
+        description: "Payment server have issue right now. Try get free option instead.",
+        variant: "destructive"
+      });
+    }, 1500);
   };
 
   return (
@@ -167,7 +175,7 @@ const GemPacksSection = () => {
               
               <div className="space-y-2">
                 <Button 
-                  onClick={handleBuyNow}
+                  onClick={() => handlePurchase(pack.name)}
                   className={`w-full font-bold rounded-xl py-2 ${
                     pack.color === 'blue' ? 'bg-brawl-blue hover:bg-brawl-blue/80' :
                     pack.color === 'purple' ? 'bg-brawl-purple hover:bg-brawl-purple/80' :
@@ -177,7 +185,7 @@ const GemPacksSection = () => {
                   } transform transition-transform active:scale-95`}
                 >
                   <ShoppingCart size={18} className="mr-2" />
-                  Buy Now
+                  {pack.isFree ? "Claim Free" : "Purchase"}
                 </Button>
                 
                 <Button 

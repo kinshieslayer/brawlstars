@@ -25,15 +25,15 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between py-4">
         <div className="flex items-center">
           <img 
-            src="/brawlshop-logo.png" 
+            src="/lovable-uploads/17227926-4a10-45aa-bf0e-b6338c4909f8.png" 
             alt="Brawl Shop" 
-            className="h-10"
+            className="h-10 mr-2"
             onError={(e) => {
               e.currentTarget.src = "/placeholder.svg";
-              e.currentTarget.className = "h-10 w-36";
+              e.currentTarget.className = "h-10 w-10";
             }}
           />
-          <h1 className="text-2xl font-lilita ml-2 text-brawl-purple">
+          <h1 className="text-2xl font-lilita text-brawl-purple">
             <span className="text-brawl-blue">Brawl</span>Shop
           </h1>
         </div>
