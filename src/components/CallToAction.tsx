@@ -19,46 +19,46 @@ const CallToAction = () => {
   };
   
   return (
-    <section className="py-12 md:py-16 bg-gradient-to-r from-brawl-purple to-brawl-blue relative overflow-hidden">
-      <div className="absolute inset-0 bg-gem-pattern opacity-10"></div>
-      
-      {/* Floating gems */}
-      <div className="absolute top-10 right-[10%] animate-float">
-        <div className="h-16 w-16 bg-white/10 rounded-lg transform rotate-45"></div>
-      </div>
-      <div className="absolute bottom-10 left-[20%] animate-float animation-delay-1000">
-        <div className="h-12 w-12 bg-white/10 rounded-lg transform rotate-45"></div>
+    <section className="py-12 md:py-16 bg-black relative overflow-hidden">
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-0 right-0">
+          <div className="h-64 w-64 bg-brawl-purple rounded-bl-full"></div>
+        </div>
+        <div className="absolute bottom-0 left-0">
+          <div className="h-48 w-48 bg-brawl-blue rounded-tr-full"></div>
+        </div>
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-3xl mx-auto text-center animate-fade-in">
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-lilita mb-4 md:mb-6 text-white">
-            Power Up Your <span className="text-brawl-yellow">Brawl Stars</span> Adventure!
-          </h2>
-          <p className="text-base sm:text-lg md:text-xl text-white/80 mb-6 md:mb-8">
-            Get exclusive skins, unlock new brawlers, and dominate the arena with premium gems from the official Brawl Shop.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              onClick={handleBuyNow}
-              className="bg-brawl-yellow hover:bg-brawl-yellow/90 text-black font-bold text-lg py-4 px-6 rounded-xl transform transition-transform hover:scale-105 active:scale-95"
-            >
-              <ShoppingCart size={20} className="mr-2" />
-              Shop Now
-            </Button>
-            <Button 
-              onClick={openGetFreeDialog}
-              className="bg-transparent border-2 border-white hover:bg-white/10 text-white font-bold text-lg py-4 px-6 rounded-xl transform transition-transform hover:scale-105 active:scale-95"
-            >
-              View Deals
-            </Button>
+        <div className="flex flex-col md:flex-row items-center justify-between">
+          <div className="md:w-1/2 mb-8 md:mb-0 text-left">
+            <h1 className="text-4xl md:text-6xl font-lilita mb-4 text-white">
+              Power Up Your <span className="text-brawl-purple">Brawl <br className="hidden md:block" />Stars</span> Adventure!
+            </h1>
+            <p className="text-lg md:text-xl mb-8 text-white/80">
+              Get exclusive skins, unlock new brawlers, and dominate the arena with premium gems from the official Brawl Shop.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button 
+                onClick={handleBuyNow}
+                className="bg-brawl-yellow hover:bg-brawl-yellow/90 text-black font-bold text-lg py-6 px-8 rounded-xl w-40"
+              >
+                Shop Now <ArrowRight size={20} className="ml-2" />
+              </Button>
+              <Button 
+                onClick={openGetFreeDialog}
+                className="bg-transparent border-2 border-white hover:bg-white/10 text-white font-bold text-lg py-6 px-8 rounded-xl w-40"
+              >
+                View Deals
+              </Button>
+            </div>
           </div>
-          
-          <div className="mt-8 md:mt-12 flex justify-center">
+
+          <div className="md:w-1/2 relative flex justify-center md:justify-end">
             <img 
-              src="/lovable-uploads/29cf6554-5b4d-484c-a73f-25a548a74268.png" 
+              src="/lovable-uploads/bc283ce1-5c22-49d8-8488-ae367fe74bcb.png" 
               alt="Brawl Stars Character" 
-              className="max-h-32 animate-float"
+              className="max-h-96 animate-float"
             />
           </div>
         </div>

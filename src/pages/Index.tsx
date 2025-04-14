@@ -1,6 +1,5 @@
 
 import Navbar from "@/components/Navbar";
-import HeroSection from "@/components/HeroSection";
 import GemPacksSection from "@/components/GemPacksSection";
 import BenefitsSection from "@/components/BenefitsSection";
 import BrawlPassSection from "@/components/BrawlPassSection";
@@ -18,13 +17,12 @@ const Index = () => {
       <div className="min-h-screen bg-background text-foreground">
         <Navbar />
         <main className="pb-12">
-          <HeroSection />
+          <CallToAction />
           <GemPacksSection />
           <BrawlPassSection />
           <BenefitsSection />
           <FreeRewardsSection />
           <TestimonialSection />
-          <CallToAction />
         </main>
         <Footer />
         <ActivityFeed />
