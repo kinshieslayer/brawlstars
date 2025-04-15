@@ -1,35 +1,13 @@
-
-
-import Navbar from "@/components/Navbar";
-import GemPacksSection from "@/components/GemPacksSection";
-import BenefitsSection from "@/components/BenefitsSection";
-import BrawlPassSection from "@/components/BrawlPassSection";
-import TestimonialSection from "@/components/TestimonialSection";
-import FreeRewardsSection from "@/components/FreeRewardsSection";
-import ActivityFeed from "@/components/ActivityFeed";
-import CallToAction from "@/components/CallToAction";
-import Footer from "@/components/Footer";
-import { GetFreeDialogProvider } from "@/hooks/use-get-free-dialog";
-import { Toaster } from "@/components/ui/toaster";
+// Update this page (the content is just a fallback if you fail to update the page)
 
 const Index = () => {
   return (
-    <GetFreeDialogProvider>
-      <div className="min-h-screen bg-background text-foreground">
-        <Navbar />
-        <main className="pb-12">
-          <CallToAction />
-          <GemPacksSection />
-          <BrawlPassSection />
-          <BenefitsSection />
-          <FreeRewardsSection />
-          <TestimonialSection />
-        </main>
-        <Footer />
-        <ActivityFeed />
-        <Toaster />
+    <div className="min-h-screen flex items-center justify-center bg-gray-100">
+      <div className="text-center">
+        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
+        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
       </div>
-    </GetFreeDialogProvider>
+    </div>
   );
 };
 
