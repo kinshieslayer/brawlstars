@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Lilita+One&family=Nunito:wght@400;600;700;800&display=swap');
 
 @tailwind base;
@@ -74,10 +73,21 @@
   transform: rotate(45deg);
   transition: transform 0.6s;
   z-index: 1;
+  pointer-events: none;
 }
 
 .gem-card:hover::before {
   transform: rotate(45deg) translate(50%, 50%);
+}
+
+.gem-card > * {
+  position: relative;
+  z-index: 2;
+}
+
+.gem-card button {
+  position: relative;
+  z-index: 3;
 }
 
 @keyframes fade-in {

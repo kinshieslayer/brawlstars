@@ -1,8 +1,5 @@
-
-
 import Navbar from "@/components/Navbar";
 import GemPacksSection from "@/components/GemPacksSection";
-import BenefitsSection from "@/components/BenefitsSection";
 import BrawlPassSection from "@/components/BrawlPassSection";
 import TestimonialSection from "@/components/TestimonialSection";
 import FreeRewardsSection from "@/components/FreeRewardsSection";
@@ -21,7 +18,6 @@ const Index = () => {
           <CallToAction />
           <GemPacksSection />
           <BrawlPassSection />
-          <BenefitsSection />
           <FreeRewardsSection />
           <TestimonialSection />
         </main>

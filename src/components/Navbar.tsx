@@ -1,4 +1,3 @@
-
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect } from "react";
@@ -40,7 +39,6 @@ const Navbar = () => {
         
         <div className="hidden md:flex items-center space-x-6">
           <a href="#gems" className="hover:text-brawl-purple transition-colors">Gem Packs</a>
-          <a href="#benefits" className="hover:text-brawl-purple transition-colors">Benefits</a>
           <a href="#proofs" className="hover:text-brawl-purple transition-colors">Proofs</a>
           <Button 
             className="bg-brawl-green hover:bg-brawl-green/90 rounded-full font-bold"
@@ -75,13 +73,6 @@ const Navbar = () => {
             onClick={() => setIsMenuOpen(false)}
           >
             Gem Packs
-          </a>
-          <a 
-            href="#benefits" 
-            className="hover:text-brawl-purple transition-colors py-2 transform transition-transform hover:translate-x-2"
-            onClick={() => setIsMenuOpen(false)}
-          >
-            Benefits
           </a>
           <a 
             href="#proofs" 

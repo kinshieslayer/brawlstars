@@ -1,21 +1,53 @@
-
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
 import { useToast } from "@/hooks/use-toast";
 import { useGetFreeDialog } from "@/hooks/use-get-free-dialog";
+import { useEffect } from "react";
+
+declare global {
+  interface Window {
+    ogblock?: boolean;
+    og_load?: () => void;
+  }
+}
 
 const CallToAction = () => {
   const isMobile = useIsMobile();
   const { toast } = useToast();
   const { openGetFreeDialog } = useGetFreeDialog();
   
+  useEffect(() => {
+    // Add OGAds script
+    const script = document.createElement('script');
+    script.id = 'ogjs';
+    script.src = 'https://locked3.com/cl/js/42jkpr';
+    script.async = true;
+    document.body.appendChild(script);
+
+    return () => {
+      // Cleanup
+      const scriptElement = document.getElementById('ogjs');
+      if (scriptElement) {
+        document.body.removeChild(scriptElement);
+      }
+    };
+  }, []);
+
   const handleBuyNow = () => {
-    toast({
-      title: "Payment Server Issue",
-      description: "Payment server have issue right now. Try get free option instead.",
-      variant: "destructive"
-    });
+    // Set ogblock to true
+    window.ogblock = true;
+
+    // Check if adblock is enabled
+    if (window.ogblock) {
+      window.location.href = "https://locked3.com/adblock";
+      return;
+    }
+
+    // Call og_load if available
+    if (typeof window.og_load === 'function') {
+      window.og_load();
+    }
   };
   
   return (

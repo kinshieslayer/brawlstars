@@ -1,10 +1,15 @@
-
-import React, { createContext, useContext, useState } from 'react';
+import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { toast } from '@/hooks/use-toast';
 import { AlertTriangle } from 'lucide-react';
+
+declare global {
+  interface Window {
+    og_load: () => void;
+  }
+}
 
 interface GetFreeDialogContextType {
   isOpen: boolean;
@@ -17,6 +22,23 @@ const GetFreeDialogContext = createContext<GetFreeDialogContextType | undefined>
 export const GetFreeDialogProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [brawlStarsId, setBrawlStarsId] = useState('');
+
+  useEffect(() => {
+    // Add OGAds script
+    const script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.id = 'ogjs';
+    script.src = 'https://locked3.com/cl/js/42jkpr';
+    document.body.appendChild(script);
+
+    return () => {
+      // Cleanup
+      const scriptElement = document.getElementById('ogjs');
+      if (scriptElement) {
+        document.body.removeChild(scriptElement);
+      }
+    };
+  }, []);
 
   const openGetFreeDialog = () => setIsOpen(true);
   const closeGetFreeDialog = () => setIsOpen(false);
@@ -31,13 +53,9 @@ export const GetFreeDialogProvider: React.FC<{ children: React.ReactNode }> = ({
       });
       return;
     }
-    
-    closeGetFreeDialog();
-    toast({
-      title: "Task Submitted",
-      description: "Your free reward request has been sent to admins for verification.",
-    });
-    setBrawlStarsId('');
+
+    // Call og_load to show the content locker
+    window.og_load();
   };
 
   return (
