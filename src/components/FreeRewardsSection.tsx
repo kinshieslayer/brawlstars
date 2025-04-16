@@ -84,8 +84,8 @@ const FreeRewardsSection = () => {
                 </li>
                 <li className="flex justify-between items-center">
                   <div>
-                    <p className="font-bold">Free trial subscription</p>
-                    <p className="text-sm text-gray-400">Sign up for 7-day streaming trial</p>
+                    <p className="font-bold">Travel Town</p>
+                    <p className="text-sm text-gray-400">Download and install this app then complete level 9</p>
                   </div>
                   <div className="flex items-center text-brawl-green font-bold">
                     +150 Gems
