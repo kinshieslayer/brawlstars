@@ -9,20 +9,20 @@ const brawlPassOptions = [
   {
     id: 1,
     name: "Pro Pass",
-    price: "$4.99",
+    price: "$20.99",
     color: "green",
     features: [
-      "Basic rewards each tier",
-      "Limited brawl boxes",
-      "Basic emotes",
-      "Free brawler progression"
+      "Everything in Pro Pass",
+      "Instant tier skip (+10)",
+      "Exclusive Plus skin",
+      "Bonus gems and coins"
     ],
     isFree: false
   },
   {
     id: 2,
-    name: "Pro Pass",
-    price: "$9.99",
+    name: "brawl Pass",
+    price: "$6.99",
     color: "blue",
     features: [
       "Exclusive seasonal skin",
@@ -35,7 +35,7 @@ const brawlPassOptions = [
   {
     id: 3,
     name: "Brawl Pass Plus",
-    price: "$19.99",
+    price: "$9.99",
     color: "yellow",
     features: [
       "Everything in Pro Pass",
