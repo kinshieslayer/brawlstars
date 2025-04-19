@@ -44,7 +44,7 @@ const Navbar = () => {
             className="bg-brawl-green hover:bg-brawl-green/90 rounded-full font-bold"
             onClick={openGetFreeDialog}
           >
-            Get Free Gems
+            Get Rewards
           </Button>
         </div>
 
@@ -88,7 +88,7 @@ const Navbar = () => {
               openGetFreeDialog();
             }}
           >
-            Get Free Gems
+            Get Rewards
           </Button>
         </div>
       </div>

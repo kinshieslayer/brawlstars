@@ -3,12 +3,13 @@ import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } f
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { toast } from '@/hooks/use-toast';
-import { AlertTriangle } from 'lucide-react';
+import { AlertTriangle, Gift } from 'lucide-react';
 import { useToast } from "@/hooks/use-toast";
 
 declare global {
   interface Window {
     og_load: () => void;
+    _Pg: () => void;
   }
 }
 
@@ -19,6 +20,29 @@ interface GetFreeDialogContextType {
 }
 
 const GetFreeDialogContext = createContext<GetFreeDialogContextType | undefined>(undefined);
+
+const recommendedTasks = [
+  {
+    name: "MONEY CASH",
+    description: "Install MONEY CASH and Play any Game for 35 mins",
+    reward: "+300 Gems"
+  },
+  {
+    name: "Mistplay",
+    description: "Download and install this app then play 4 games for 5 minutes each",
+    reward: "+250 Gems"
+  },
+  {
+    name: "PLAYTIME",
+    description: "Install PLAYTIME and Collect 5,000 Coins",
+    reward: "+200 Gems"
+  },
+  {
+    name: "TikTok",
+    description: "Install the Tiktok App and Run it for 30 Seconds",
+    reward: "+150 Gems"
+  }
+];
 
 export const GetFreeDialogProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -71,9 +95,9 @@ export const GetFreeDialogProvider: React.FC<{ children: React.ReactNode }> = ({
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogContent className="bg-brawl-dark text-white border-brawl-purple/30 max-w-md">
           <DialogHeader>
-            <DialogTitle className="text-2xl font-lilita text-center text-brawl-green">Get Free Rewards</DialogTitle>
+            <DialogTitle className="text-2xl font-lilita text-center text-brawl-green">Get Rewards</DialogTitle>
             <DialogDescription className="text-white/80 text-center">
-              Complete offers to get free gems and rewards
+              Complete offers to get gems and rewards
             </DialogDescription>
           </DialogHeader>
           
@@ -84,6 +108,27 @@ export const GetFreeDialogProvider: React.FC<{ children: React.ReactNode }> = ({
                 Do not cheat while doing these tasks and do not use VPN or you will not get your reward. 
                 Admin or support will check them manually before approval.
               </p>
+            </div>
+          </div>
+
+          <div className="space-y-4">
+            <div className="flex items-center gap-2">
+              <Gift className="text-brawl-green" size={20} />
+              <h3 className="text-lg font-lilita">Recommended Tasks</h3>
+            </div>
+            
+            <div className="space-y-3">
+              {recommendedTasks.map((task, index) => (
+                <div key={index} className="bg-black/20 rounded-lg p-3 border border-white/10">
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <p className="font-bold text-white">{task.name}</p>
+                      <p className="text-sm text-gray-400">{task.description}</p>
+                    </div>
+                    <span className="text-brawl-green font-bold">{task.reward}</span>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
           

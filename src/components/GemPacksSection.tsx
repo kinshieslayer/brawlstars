@@ -1,4 +1,3 @@
-
 import { Star, ShoppingCart, Gift } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -7,16 +6,6 @@ import { useToast } from "@/hooks/use-toast";
 import { useGetFreeDialog } from "@/hooks/use-get-free-dialog";
 
 const gemPacks = [
-  {
-    id: 0,
-    name: "Free Gems",
-    gems: 30,
-    price: "FREE",
-    popular: false,
-    bestValue: false,
-    color: "green",
-    isFree: true
-  },
   {
     id: 1,
     name: "Starter Pack",
@@ -100,7 +89,7 @@ const GemPacksSection = () => {
           </p>
         </div>
         
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 md:gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 max-w-6xl mx-auto">
           {gemPacks.map((pack, index) => (
             <div 
               key={pack.id}
@@ -130,7 +119,7 @@ const GemPacksSection = () => {
               )}
               {pack.isFree && (
                 <Badge className="absolute -top-3 right-4 bg-brawl-green text-white px-3 py-1 rounded-full font-bold">
-                  FREE
+                  REWARD
                 </Badge>
               )}
               
@@ -185,7 +174,7 @@ const GemPacksSection = () => {
                   } transform transition-transform active:scale-95`}
                 >
                   <ShoppingCart size={18} className="mr-2" />
-                  {pack.isFree ? "Claim Free" : "Purchase"}
+                  {pack.isFree ? "Get Reward" : "Purchase"}
                 </Button>
                 
                 <Button 

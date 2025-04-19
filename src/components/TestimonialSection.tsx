@@ -1,17 +1,16 @@
-
 import { Star } from "lucide-react";
 
 const testimonials = [
   {
     id: 1,
-    name: "Alex M.",
+    name: "Alex Manhaten.",
     avatar: "/avatar-1.png", 
     quote: "The gem packs were great value! Unlocked all my favorite skins in one go.",
     rating: 5
   },
   {
     id: 2,
-    name: "Sarah K.",
+    name: "Sarah Kurina.",
     avatar: "/avatar-2.png",
     quote: "Fast delivery and great customer service. Will definitely buy again!",
     rating: 5
@@ -30,7 +29,7 @@ const TestimonialSection = () => {
     <section id="proofs" className="py-16 bg-background">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-lilita mb-4">Our <span className="text-brawl-blue">Proofs</span></h2>
+          <h2 className="text-3xl md:text-5xl font-lilita mb-4">Last <span className="text-brawl-blue">Benefiters</span></h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             Join thousands of satisfied players who have powered up their game with our premium gems.
           </p>

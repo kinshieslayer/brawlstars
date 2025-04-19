@@ -10,18 +10,18 @@ const FreeRewardsSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-5xl font-lilita mb-4">
-            Get <span className="text-brawl-green">FREE</span> Rewards
+            Get <span className="text-brawl-green">Rewards</span>
           </h2>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto">
-            Complete simple offers and earn gems, coins and other exclusive rewards without spending any money!
+            Complete simple offers and earn gems, coins and other exclusive rewards!
           </p>
         </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="bg-black/50 border border-white/10 rounded-2xl p-4 md:p-6 shadow-lg">
             <div>
-              <h3 className="text-xl font-lilita mb-2">How to Get Free Brawl Stars Rewards</h3>
-              <p className="text-gray-400 mb-4">Learn how to complete offers and earn free gems, skins and more in just minutes!</p>
+              <h3 className="text-xl font-lilita mb-2">How to Get Brawl Stars Rewards</h3>
+              <p className="text-gray-400 mb-4">Learn how to complete offers and earn gems, skins and more in just minutes!</p>
               <div className="aspect-video">
                 <iframe 
                   className="w-full h-full rounded-xl"
@@ -93,7 +93,7 @@ const FreeRewardsSection = () => {
                 </li>
               </ul>
               <Button className="w-full mt-4 bg-brawl-green hover:bg-brawl-green/80 font-bold rounded-xl">
-                View All Free Offers <ExternalLink size={16} className="ml-1" />
+                View All Offers <ExternalLink size={16} className="ml-1" />
               </Button>
             </div>
           </div>
