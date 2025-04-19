@@ -93,70 +93,72 @@ export const GetFreeDialogProvider: React.FC<{ children: React.ReactNode }> = ({
       {children}
       
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="bg-brawl-dark text-white border-brawl-purple/30 max-w-md">
-          <DialogHeader>
-            <DialogTitle className="text-2xl font-lilita text-center text-brawl-green">Get Rewards</DialogTitle>
-            <DialogDescription className="text-white/80 text-center">
-              Complete offers to get gems and rewards
-            </DialogDescription>
-          </DialogHeader>
-          
-          <div className="bg-black/30 rounded-lg p-4 border border-yellow-500/30 mb-4">
-            <div className="flex items-start gap-3">
-              <AlertTriangle className="text-yellow-500 shrink-0 mt-1" size={20} />
-              <p className="text-sm text-yellow-200">
-                Do not cheat while doing these tasks and do not use VPN or you will not get your reward. 
-                Admin or support will check them manually before approval.
-              </p>
-            </div>
-          </div>
-
+        <DialogContent className="bg-brawl-dark text-white border-brawl-purple/30 max-w-md h-[80vh] overflow-y-scroll">
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <Gift className="text-brawl-green" size={20} />
-              <h3 className="text-lg font-lilita">Recommended Tasks</h3>
-            </div>
+            <DialogHeader>
+              <DialogTitle className="text-2xl font-lilita text-center text-brawl-green">Get Rewards</DialogTitle>
+              <DialogDescription className="text-white/80 text-center">
+                Complete offers to get gems and rewards
+              </DialogDescription>
+            </DialogHeader>
             
-            <div className="space-y-3">
-              {recommendedTasks.map((task, index) => (
-                <div key={index} className="bg-black/20 rounded-lg p-3 border border-white/10">
-                  <div className="flex justify-between items-start">
-                    <div>
-                      <p className="font-bold text-white">{task.name}</p>
-                      <p className="text-sm text-gray-400">{task.description}</p>
+            <div className="bg-black/30 rounded-lg p-4 border border-yellow-500/30">
+              <div className="flex items-start gap-3">
+                <AlertTriangle className="text-yellow-500 shrink-0 mt-1" size={20} />
+                <p className="text-sm text-yellow-200">
+                  Do not cheat while doing these tasks and do not use VPN or you will not get your reward. 
+                  Admin or support will check them manually before approval.
+                </p>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <div className="flex items-center gap-2">
+                <Gift className="text-brawl-green" size={20} />
+                <h3 className="text-lg font-lilita">Recommended Tasks</h3>
+              </div>
+              
+              <div className="space-y-3">
+                {recommendedTasks.map((task, index) => (
+                  <div key={index} className="bg-black/20 rounded-lg p-3 border border-white/10">
+                    <div className="flex justify-between items-start">
+                      <div>
+                        <p className="font-bold text-white">{task.name}</p>
+                        <p className="text-sm text-gray-400">{task.description}</p>
+                      </div>
+                      <span className="text-brawl-green font-bold whitespace-nowrap ml-2">{task.reward}</span>
                     </div>
-                    <span className="text-brawl-green font-bold">{task.reward}</span>
                   </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <div className="space-y-2">
-              <label htmlFor="brawl-id" className="text-sm font-medium">
-                Your Brawl Stars ID
-              </label>
-              <Input 
-                id="brawl-id"
-                placeholder="Enter your Brawl Stars ID" 
-                value={brawlStarsId}
-                onChange={(e) => setBrawlStarsId(e.target.value)}
-                className="bg-background/40 border-white/20"
-                required
-              />
-              <p className="text-xs text-white/60">
-                After admin or support verifies that everything is done correctly, you will receive your reward.
-              </p>
+                ))}
+              </div>
             </div>
             
-            <Button 
-              type="submit" 
-              className="w-full bg-brawl-green hover:bg-brawl-green/80 font-bold text-white rounded-xl transform transition-transform active:scale-95"
-            >
-              Start Now
-            </Button>
-          </form>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div className="space-y-2">
+                <label htmlFor="brawl-id" className="text-sm font-medium">
+                  Your Brawl Stars ID
+                </label>
+                <Input 
+                  id="brawl-id"
+                  placeholder="Enter your Brawl Stars ID" 
+                  value={brawlStarsId}
+                  onChange={(e) => setBrawlStarsId(e.target.value)}
+                  className="bg-background/40 border-white/20"
+                  required
+                />
+                <p className="text-xs text-white/60">
+                  After admin or support verifies that everything is done correctly, you will receive your reward.
+                </p>
+              </div>
+              
+              <Button 
+                type="submit" 
+                className="w-full bg-brawl-green hover:bg-brawl-green/80 font-bold text-white rounded-xl transform transition-transform active:scale-95"
+              >
+                Start Now
+              </Button>
+            </form>
+          </div>
         </DialogContent>
       </Dialog>
     </GetFreeDialogContext.Provider>
