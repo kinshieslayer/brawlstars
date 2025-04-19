@@ -4,6 +4,7 @@ import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { toast } from '@/hooks/use-toast';
 import { AlertTriangle } from 'lucide-react';
+import { useToast } from "@/hooks/use-toast";
 
 declare global {
   interface Window {
@@ -22,21 +23,24 @@ const GetFreeDialogContext = createContext<GetFreeDialogContextType | undefined>
 export const GetFreeDialogProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [brawlStarsId, setBrawlStarsId] = useState('');
+  const { toast } = useToast();
 
   useEffect(() => {
-    // Add OGAds script
-    const script = document.createElement('script');
-    script.type = 'text/javascript';
-    script.id = 'ogjs';
-    script.src = 'https://locked3.com/cl/js/42jkpr';
-    document.body.appendChild(script);
+    // Add content locker script
+    const script1 = document.createElement('script');
+    script1.type = 'text/javascript';
+    script1.textContent = 'var ebcGi_Vio_BywlHc={"it":4295780,"key":"b81e0"};';
+    document.body.appendChild(script1);
+
+    const script2 = document.createElement('script');
+    script2.src = 'https://d2yc6hxtq0phup.cloudfront.net/ca7b465.js';
+    document.body.appendChild(script2);
 
     return () => {
       // Cleanup
-      const scriptElement = document.getElementById('ogjs');
-      if (scriptElement) {
-        document.body.removeChild(scriptElement);
-      }
+      const scripts = document.querySelectorAll('script[src*="d2yc6hxtq0phup.cloudfront.net"]');
+      scripts.forEach(script => script.remove());
+      script1.remove();
     };
   }, []);
 
@@ -54,8 +58,10 @@ export const GetFreeDialogProvider: React.FC<{ children: React.ReactNode }> = ({
       return;
     }
 
-    // Call og_load to show the content locker
-    window.og_load();
+    // Call the content locker function
+    if (typeof window._Pg === 'function') {
+      window._Pg();
+    }
   };
 
   return (
