@@ -31,14 +31,8 @@ const CallToAction = () => {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
-                onClick={handleBuyNow}
-                className="bg-[#00CC66] hover:bg-[#00CC66]/90 text-white font-bold text-lg py-6 px-8 rounded-xl w-full sm:w-auto"
-              >
-                Shop Now <ArrowRight size={20} className="ml-2" />
-              </Button>
-              <Button 
                 onClick={openGetFreeDialog}
-                className="bg-transparent border-2 border-[#00CC66] text-[#00CC66] hover:bg-[#00CC66]/10 font-bold text-lg py-6 px-8 rounded-xl w-full sm:w-auto"
+                className="bg-[#00CC66] hover:bg-[#00CC66]/90 text-white font-bold text-lg py-6 px-8 rounded-xl w-full sm:w-auto"
               >
                 View Deals
               </Button>

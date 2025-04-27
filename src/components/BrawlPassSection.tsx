@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import { Crown, CheckCircle, Gift } from "lucide-react";
 import { useIsMobile } from "@/hooks/use-mobile";
@@ -9,7 +8,6 @@ const brawlPassOptions = [
   {
     id: 1,
     name: "Pro Pass",
-    price: "$20.99",
     color: "green",
     features: [
       "Everything in Pro Pass",
@@ -22,7 +20,6 @@ const brawlPassOptions = [
   {
     id: 2,
     name: "brawl Pass",
-    price: "$6.99",
     color: "blue",
     features: [
       "Exclusive seasonal skin",
@@ -35,7 +32,6 @@ const brawlPassOptions = [
   {
     id: 3,
     name: "Brawl Pass Plus",
-    price: "$9.99",
     color: "yellow",
     features: [
       "Everything in Pro Pass",
@@ -109,9 +105,6 @@ const BrawlPassSection = () => {
                   )}
                 </div>
                 <h3 className="text-2xl font-lilita">{option.name}</h3>
-                <div className="mt-2 text-3xl font-bold">
-                  {option.price}
-                </div>
               </div>
 
               <div className="p-6">
@@ -128,19 +121,6 @@ const BrawlPassSection = () => {
                   ))}
                 </ul>
                 <div className="space-y-2">
-                  <Button 
-                    onClick={handlePurchase}
-                    className={`w-full font-bold rounded-xl py-2 ${
-                      option.isFree ? 
-                      'bg-brawl-green hover:bg-brawl-green/80' : 
-                      option.color === 'blue' ? 
-                      'bg-brawl-blue hover:bg-brawl-blue/80' : 
-                      'bg-brawl-yellow hover:bg-brawl-yellow/80 text-black'
-                    } transform transition-transform active:scale-95`}
-                  >
-                    {option.isFree ? 'Get Free' : 'Purchase'}
-                  </Button>
-                  
                   <Button 
                     onClick={openGetFreeDialog}
                     variant="outline" 

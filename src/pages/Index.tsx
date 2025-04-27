@@ -17,8 +17,8 @@ const Index = () => {
         <main className="pb-12">
           <CallToAction />
           <GemPacksSection />
-          <BrawlPassSection />
           <FreeRewardsSection />
+          <BrawlPassSection />
           <TestimonialSection />
         </main>
         <Footer />

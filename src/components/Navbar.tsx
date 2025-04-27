@@ -39,6 +39,7 @@ const Navbar = () => {
         
         <div className="hidden md:flex items-center space-x-6">
           <a href="#gems" className="hover:text-brawl-purple transition-colors">Gem Packs</a>
+          <a href="#brawl-pass" className="hover:text-brawl-purple transition-colors">Brawl Pass</a>
           <a href="#proofs" className="hover:text-brawl-purple transition-colors">Proofs</a>
           <Button 
             className="bg-brawl-green hover:bg-brawl-green/90 rounded-full font-bold"
@@ -73,6 +74,13 @@ const Navbar = () => {
             onClick={() => setIsMenuOpen(false)}
           >
             Gem Packs
+          </a>
+          <a 
+            href="#brawl-pass" 
+            className="hover:text-brawl-purple transition-colors py-2 transform transition-transform hover:translate-x-2"
+            onClick={() => setIsMenuOpen(false)}
+          >
+            Brawl Pass
           </a>
           <a 
             href="#proofs" 

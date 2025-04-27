@@ -10,7 +10,6 @@ const gemPacks = [
     id: 1,
     name: "Starter Pack",
     gems: 80,
-    price: "$1.99",
     popular: false,
     bestValue: false,
     color: "blue",
@@ -20,7 +19,6 @@ const gemPacks = [
     id: 2,
     name: "Value Pack",
     gems: 170,
-    price: "$4.99",
     popular: true,
     bestValue: false,
     color: "purple",
@@ -30,7 +28,6 @@ const gemPacks = [
     id: 3,
     name: "Pro Pack",
     gems: 360,
-    price: "$9.99",
     popular: false,
     bestValue: true,
     color: "yellow",
@@ -40,7 +37,6 @@ const gemPacks = [
     id: 4,
     name: "Mega Pack",
     gems: 950,
-    price: "$19.99",
     popular: false,
     bestValue: false,
     color: "red",
@@ -160,27 +156,15 @@ const GemPacksSection = () => {
                 <span className="text-2xl font-lilita text-white">{pack.gems} Gems</span>
               </div>
               
-              <p className="text-center text-xl font-bold text-white mb-4 md:mb-6">{pack.price}</p>
-              
-              <div className="space-y-2">
-                <Button 
-                  onClick={() => handlePurchase(pack.name)}
-                  className={`w-full font-bold rounded-xl py-2 ${
-                    pack.color === 'blue' ? 'bg-brawl-blue hover:bg-brawl-blue/80' :
-                    pack.color === 'purple' ? 'bg-brawl-purple hover:bg-brawl-purple/80' :
-                    pack.color === 'yellow' ? 'bg-brawl-yellow hover:bg-brawl-yellow/80 text-black' :
-                    pack.color === 'green' ? 'bg-brawl-green hover:bg-brawl-green/80' :
-                    'bg-brawl-red hover:bg-brawl-red/80'
-                  } transform transition-transform active:scale-95`}
-                >
-                  <ShoppingCart size={18} className="mr-2" />
-                  {pack.isFree ? "Get Reward" : "Purchase"}
-                </Button>
-                
+              <div className="space-y-4">
+                <div className="bg-brawl-dark border border-brawl-purple rounded-lg p-4 mb-3">
+                  <p className="text-sm font-lilita text-center text-white leading-relaxed">
+                    <span className="text-brawl-yellow font-bold">Complete offers</span> to get <span className="text-brawl-purple font-bold">gems</span> and <span className="text-brawl-green font-bold">rewards</span>
+                  </p>
+                </div>
                 <Button 
                   onClick={openGetFreeDialog}
-                  variant="outline" 
-                  className="w-full font-bold rounded-xl py-2 border-2 border-white/20 hover:bg-white/10 text-white transform transition-transform active:scale-95"
+                  className="w-full font-bold rounded-xl py-2 bg-gradient-to-r from-brawl-yellow to-brawl-yellow/80 hover:from-brawl-yellow/90 hover:to-brawl-yellow/70 text-black transform transition-transform active:scale-95 shadow-lg shadow-brawl-yellow/20"
                 >
                   <Gift size={18} className="mr-2" />
                   Get Free
