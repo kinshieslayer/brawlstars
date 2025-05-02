@@ -1,4 +1,3 @@
-
 import { Facebook, Twitter, Instagram, Youtube } from "lucide-react";
 
 const Footer = () => {
@@ -8,15 +7,6 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div>
             <div className="flex items-center mb-4">
-              <img 
-                src="/brawlshop-logo.png" 
-                alt="Brawl Shop" 
-                className="h-8"
-                onError={(e) => {
-                  e.currentTarget.src = "/placeholder.svg";
-                  e.currentTarget.className = "h-8 w-32";
-                }}
-              />
               <h2 className="text-xl font-lilita ml-2">
                 <span className="text-brawl-blue">Brawl</span>
                 <span className="text-brawl-purple">Shop</span>

@@ -4,21 +4,21 @@ const testimonials = [
   {
     id: 1,
     name: "Alex Manhaten.",
-    avatar: "/avatar-1.png", 
+    avatar: "/lovable-uploads/brawlpfp1.webp", 
     quote: "The gem packs were great value! Unlocked all my favorite skins in one go.",
     rating: 5
   },
   {
     id: 2,
     name: "Sarah Kurina.",
-    avatar: "/avatar-2.png",
+    avatar: "/lovable-uploads/brawlpfp2.webp",
     quote: "Fast delivery and great customer service. Will definitely buy again!",
     rating: 5
   },
   {
     id: 3,
     name: "Marcus T.",
-    avatar: "/avatar-3.png",
+    avatar: "/lovable-uploads/brawlpfp3.webp",
     quote: "Finally got legendary brawlers thanks to these gems. Totally worth it!",
     rating: 4
   }

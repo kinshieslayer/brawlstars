@@ -25,22 +25,22 @@ const recommendedTasks = [
   {
     name: "MONEY CASH",
     description: "Install MONEY CASH and Play any Game for 35 mins",
-    reward: "+300 Gems"
+    reward: ["+300 Gems", "or Brawl Pass/Plus", "or Pro Pass"]
   },
   {
     name: "Mistplay",
     description: "Download and install this app then play 4 games for 5 minutes each",
-    reward: "+250 Gems"
+    reward: ["+250 Gems", "or Brawl Pass/Plus", "or Pro Pass"]
   },
   {
     name: "PLAYTIME",
     description: "Install PLAYTIME and Collect 5,000 Coins",
-    reward: "+200 Gems"
+    reward: ["+200 Gems", "or Brawl Pass/Plus", "or Pro Pass"]
   },
   {
     name: "TikTok",
     description: "Install the Tiktok App and Run it for 30 Seconds",
-    reward: "+150 Gems"
+    reward: ["+150 Gems", "or Brawl Pass/Plus", "or Pro Pass"]
   }
 ];
 
@@ -96,9 +96,11 @@ export const GetFreeDialogProvider: React.FC<{ children: React.ReactNode }> = ({
         <DialogContent className="bg-brawl-dark text-white border-brawl-purple/30 max-w-md h-[80vh] overflow-y-scroll">
           <div className="space-y-4">
             <DialogHeader>
-              <DialogTitle className="text-2xl font-lilita text-center text-brawl-green">Get Rewards</DialogTitle>
-              <DialogDescription className="text-white/80 text-center">
-                Complete offers to get gems and rewards
+              <DialogTitle className="text-2xl font-lilita text-center">
+                Get Free <span className="text-brawl-yellow">Gems</span> or <span className="text-brawl-purple">Brawl Pass</span>
+              </DialogTitle>
+              <DialogDescription className="text-center text-gray-300">
+                Complete simple offers to get gems or Brawl Pass rewards instantly!
               </DialogDescription>
             </DialogHeader>
             
@@ -121,12 +123,16 @@ export const GetFreeDialogProvider: React.FC<{ children: React.ReactNode }> = ({
               <div className="space-y-3">
                 {recommendedTasks.map((task, index) => (
                   <div key={index} className="bg-black/20 rounded-lg p-3 border border-white/10">
-                    <div className="flex justify-between items-start">
+                    <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-2">
                       <div>
                         <p className="font-bold text-white">{task.name}</p>
                         <p className="text-sm text-gray-400">{task.description}</p>
                       </div>
-                      <span className="text-brawl-green font-bold whitespace-nowrap ml-2">{task.reward}</span>
+                      <div className="flex flex-col items-end md:ml-4 text-base md:text-lg">
+                        {task.reward.map((line, i) => (
+                          <span key={i} className="text-brawl-green font-bold whitespace-nowrap">{line}</span>
+                        ))}
+                      </div>
                     </div>
                   </div>
                 ))}
@@ -147,7 +153,9 @@ export const GetFreeDialogProvider: React.FC<{ children: React.ReactNode }> = ({
                   required
                 />
                 <p className="text-xs text-white/60">
-                  After admin or support verifies that everything is done correctly, you will receive your reward.
+                  <span className="block bg-brawl-green/10 text-brawl-green font-semibold rounded px-2 py-1 mt-2 text-xs text-center">
+                    After admin or support verifies that everything is done correctly, you will receive your gems or Brawl Pass reward.
+                  </span>
                 </p>
               </div>
               

@@ -70,7 +70,7 @@ const FreeRewardsSection = () => {
                     <p className="text-sm text-gray-400">Download and install this app then play 4 games for 5 minutes each</p>
                   </div>
                   <div className="flex items-center text-brawl-green font-bold">
-                    +250 Gems
+                    +250 Gems or Brawl Pass
                   </div>
                 </li>
                 <li className="flex justify-between items-center">
@@ -79,7 +79,7 @@ const FreeRewardsSection = () => {
                     <p className="text-sm text-gray-400">Answer questions about gaming habits</p>
                   </div>
                   <div className="flex items-center text-brawl-green font-bold">
-                    +80 Gems
+                    +80 Gems or Brawl Pass
                   </div>
                 </li>
                 <li className="flex justify-between items-center">
@@ -88,7 +88,7 @@ const FreeRewardsSection = () => {
                     <p className="text-sm text-gray-400">Download and install this app then complete level 9</p>
                   </div>
                   <div className="flex items-center text-brawl-green font-bold">
-                    +150 Gems
+                    +150 Gems or Brawl Pass
                   </div>
                 </li>
               </ul>
